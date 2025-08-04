@@ -6,6 +6,8 @@ import {
   Shadows_Into_Light,
 } from "next/font/google"
 import "./globals.css"
+import { ConnectDB } from "@/lib/db"
+import { Toaster } from "sonner"
 
 const dancingScript = Dancing_Script({
   variable: "--font-dancing-script",
@@ -39,13 +41,15 @@ export const metadata = {
   description: "List 100 things you want to do before becoming a bucket.",
 }
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const conn = await ConnectDB()
   return (
     <html lang="en">
       <body
         className={`${dancingScript.variable} ${shadowsIntoLight.variable} ${gloriaHallelujah.variable} ${inter.variable} ${nunito.variable}  antialiased`}
       >
         {children}
+        <Toaster richColors position="top-center" />
       </body>
     </html>
   )

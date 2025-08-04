@@ -2,86 +2,30 @@ import SectionOne from "./_components/SectionOne"
 import BookmarkButtons from "./_components/BookmarkButtons"
 import FilterBucket from "./_components/FilterBucket"
 import SectionTwo from "./_components/SectionTwo"
+import { Bucket } from "@/lib/_models/BucketModel"
+import mongoose from "mongoose"
+import getAuthUser from "@/lib/getAuthUser"
 
-export const exampleData = [
-  {
-    id: 1,
-    todo: "Save the world",
-    status: true,
-    lat: null,
-    lng: null,
-  },
-  {
-    id: 2,
-    todo: "Idk what to do",
-    status: false,
-    lat: null,
-    lng: null,
-  },
-  {
-    id: 3,
-    todo: "Third thing to do",
-    status: false,
-    lat: null,
-    lng: null,
-  },
-  {
-    id: 4,
-    todo: "Fourth thing to do",
-    status: false,
-    lat: null,
-    lng: null,
-  },
-  {
-    id: 5,
-    todo: "Fourth thing to do",
-    status: false,
-    lat: null,
-    lng: null,
-  },
-  {
-    id: 6,
-    todo: "Fourth thing to do",
-    status: false,
-    lat: null,
-    lng: null,
-  },
-  {
-    id: 7,
-    todo: "Fourth thing to do",
-    status: false,
-    lat: null,
-    lng: null,
-  },
-  {
-    id: 8,
-    todo: "Fourth thing to do",
-    status: false,
-    lat: null,
-    lng: null,
-  },
-  {
-    id: 9,
-    todo: "Fourth thing to do",
-    status: false,
-    lat: null,
-    lng: null,
-  },
-  {
-    id: 10,
-    todo: "Fourth thing to do",
-    status: false,
-    lat: null,
-    lng: null,
-  },
-]
+export default async function BucketList() {
+  const user = await getAuthUser()
+  if (!user) {
+    // You can redirect or handle unauthorized state here
+    return <div>Unauthorized</div>
+  }
 
-const first25 = exampleData.slice(0, 25)
-const last25 = exampleData.length > 25 ? exampleData.slice(25) : []
+  const rawBuckets = await Bucket.find({
+    userId: mongoose.Types.ObjectId.createFromHexString(user.userId),
+  }).lean()
 
-console.log(first25)
+  const buckets = rawBuckets.map((bucket) => ({
+    ...bucket,
+    _id: bucket._id.toString(),
+    userId: bucket.userId.toString(),
+  }))
 
-export default function BucketList() {
+  const first25 = buckets.slice(0, 25)
+  const second25 = buckets.slice(25, 50)
+
   return (
     <div className="w-full h-full flex items-center justify-center animate-appearin">
       <div className="flex flex-col ">
@@ -90,17 +34,14 @@ export default function BucketList() {
       <div className="flex bg-white/70  shadow-md">
         <section className="h-200 w-120 p-4 flex flex-col">
           <div className="font-gloria">Page 1</div>
-          <SectionOne exampleData={first25} />
+          <SectionOne buckets={first25} />
         </section>
         <div className="flex-grow w-5 bg-leather shadow"></div>
         <section className="h-200 w-120 p-4 flex flex-col ">
           <div className="self-end font-gloria">
             <FilterBucket />
           </div>
-          <SectionTwo
-            exampleData={last25}
-            first25Full={first25.length === 25}
-          />
+          <SectionTwo />
         </section>
       </div>
     </div>
