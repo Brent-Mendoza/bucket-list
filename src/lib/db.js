@@ -4,11 +4,20 @@ if (!process.env.MONGODBURI) {
   throw new Error("MONGODB NOT FOUND!")
 }
 
+let isConnected = false
+
 export const ConnectDB = async () => {
+  if (isConnected) {
+    return
+  }
+
   try {
-    const conn = await mongoose.connect(process.env.MONGODBURI)
-    return conn
-  } catch (e) {
-    throw new Error(e)
+    await mongoose.connect(MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
+    isConnected = true
+  } catch (err) {
+    throw err
   }
 }

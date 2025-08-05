@@ -4,16 +4,20 @@ import React, { useContext, useEffect, useState } from "react"
 
 const AuthContext = React.createContext()
 
-function AuthProvider({ children, userData }) {
-  const [currentUser, setCurrentUser] = useState(userData)
+function AuthProvider({ children, userData: initialUserData }) {
+  const [userData, setUserData] = useState(initialUserData)
 
   useEffect(() => {
-    setCurrentUser(userData) // react to changes when a different user logs in
-  }, [userData])
+    const fetchUser = async () => {
+      const res = await fetch("/api/auth-user") // a new API route that calls getAuthUserData()
+      const data = await res.json()
+      setUserData(data)
+    }
+
+    fetchUser()
+  }, [])
   return (
-    <AuthContext.Provider value={{ userData: currentUser }}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={{ userData }}>{children}</AuthContext.Provider>
   )
 }
 
