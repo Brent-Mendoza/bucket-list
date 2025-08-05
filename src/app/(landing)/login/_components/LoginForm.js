@@ -35,6 +35,11 @@ const LoginForm = () => {
       },
       body: JSON.stringify(data),
     })
+    if (response.redirected) {
+      // ✅ Let browser follow the redirect
+      window.location.href = response.url
+      return
+    }
     const responseData = await response.json()
     if (!response.ok) {
       const error = responseData?.error
