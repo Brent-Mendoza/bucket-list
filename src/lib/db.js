@@ -12,7 +12,7 @@ export const ConnectDB = async () => {
   }
 
   try {
-    await mongoose.connect(MONGODB_URI, {
+    await mongoose.connect(MONGODBURI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })
