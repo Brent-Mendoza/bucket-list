@@ -45,8 +45,5 @@ export const POST = async (request) => {
     return NextResponse.json({ error: e.message }, { status: 500 })
   }
 
-  return NextResponse.json(
-    { message: "User has been created" },
-    { status: 201 }
-  )
+  return NextResponse.redirect(new URL("/bucket", request.url))
 }

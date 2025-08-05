@@ -54,8 +54,6 @@ const RegisterForm = () => {
     }
     toast("Registration successful!")
     form.reset()
-
-    router.push("/bucket")
   }
   return (
     <Form {...form}>

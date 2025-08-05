@@ -52,8 +52,6 @@ const LoginForm = () => {
     }
     toast("Login successful!")
     form.reset()
-
-    router.push("/bucket")
   }
   return (
     <Form {...form}>

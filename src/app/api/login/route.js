@@ -41,7 +41,7 @@ export const POST = async (request) => {
 
     await createSession(user._id.toString())
 
-    return NextResponse.json({ message: "User has logged in" }, { status: 200 })
+    return NextResponse.redirect(new URL("/bucket", request.url))
   } catch (e) {
     return NextResponse.json({ error: e.message }, { status: 500 })
   }
