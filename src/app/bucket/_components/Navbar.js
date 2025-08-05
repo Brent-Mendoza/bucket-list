@@ -13,7 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Form } from "@/components/ui/form"
-import { ChevronDownIcon, LogOut, Settings } from "lucide-react"
+import { ChevronDownIcon, LogOut } from "lucide-react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { useForm } from "react-hook-form"
@@ -89,10 +89,6 @@ export default function Navbar() {
                   <ChevronDownIcon />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="start" className="cursor-pointer">
-                  <DropdownMenuItem>
-                    <Settings />
-                    Settings
-                  </DropdownMenuItem>
                   <DropdownMenuItem>
                     <Form {...form}>
                       <form

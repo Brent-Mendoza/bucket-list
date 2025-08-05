@@ -7,7 +7,6 @@ import { Toaster } from "sonner"
 export default async function BucketLayout({ children }) {
   const user = await getAuthUser()
   const userData = await getAuthUserData()
-  console.log(user)
   return (
     <AuthProvider userData={userData}>
       <div className="min-h-screen w-full bg-cream flex flex-col">

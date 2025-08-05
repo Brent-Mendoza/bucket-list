@@ -1,8 +1,8 @@
+import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import Paper from "./_components/Paper"
-import { ArrowLeft } from "lucide-react"
 
-export default function ShowBucket({ params }) {
+export default function CompletedBucket({ params }) {
   const id = params.id
 
   return (

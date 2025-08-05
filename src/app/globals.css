@@ -139,6 +139,11 @@
   }
 }
 
+.mask-fade {
+  mask-image: radial-gradient(circle, black 60%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle, black 60%, transparent 100%);
+}
+
 @keyframes comeFrom {
   0% {
     opacity: 0;

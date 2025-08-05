@@ -129,7 +129,11 @@ const SectionTwo = ({ buckets, onRefresh, firstLength }) => {
         {buckets.map((data) => (
           <li key={data._id} className="flex items-center justify-between">
             <Link
-              href=""
+              href={`${
+                !data.status
+                  ? `/bucket/bucket-list/${data._id}/show`
+                  : `/bucket/bucket-list/${data._id}/completed`
+              }`}
               className="hover:tracking-wider duration-100 ease-linear"
             >
               <p className={`${data.status ? "line-through" : ""}`}>

@@ -1,7 +1,3 @@
-import SectionOne from "./_components/SectionOne"
-import BookmarkButtons from "./_components/BookmarkButtons"
-import FilterBucket from "./_components/FilterBucket"
-import SectionTwo from "./_components/SectionTwo"
 import { Bucket } from "@/lib/_models/BucketModel"
 import mongoose from "mongoose"
 import getAuthUser from "@/lib/getAuthUser"
