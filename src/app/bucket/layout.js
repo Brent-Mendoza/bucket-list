@@ -2,6 +2,7 @@ import getAuthUserData from "@/lib/getUserData"
 import Navbar from "./_components/Navbar"
 import AuthProvider from "./_provider/AuthProvider"
 import getAuthUser from "@/lib/getAuthUser"
+import { Toaster } from "sonner"
 
 export default async function BucketLayout({ children }) {
   const user = await getAuthUser()
@@ -17,6 +18,7 @@ export default async function BucketLayout({ children }) {
           {children}
         </main>
       </div>
+      <Toaster richColors position="top-center" />
     </AuthProvider>
   )
 }

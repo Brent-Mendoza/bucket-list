@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form"
 import { toast } from "sonner"
 import Modal from "./Modal"
 
-const SectionOne = ({ buckets, onRefresh }) => {
+const SectionAll = ({ buckets, onRefresh }) => {
   const form = useForm({
     resolver: zodResolver(bucketSchema),
     defaultValues: {
@@ -165,7 +165,7 @@ const SectionOne = ({ buckets, onRefresh }) => {
           </li>
         ))}
       </ol>
-      {buckets.length !== 25 && inputVisibility && (
+      {buckets.length !== 50 && inputVisibility && (
         <div className="flex items-center justify-between w-full gap-4">
           <Form {...form}>
             <form
@@ -203,7 +203,7 @@ const SectionOne = ({ buckets, onRefresh }) => {
           </Form>
         </div>
       )}
-      {buckets.length !== 25 && !inputVisibility && (
+      {buckets.length !== 50 && !inputVisibility && (
         <button
           onClick={toggleVisib}
           className="w-20 h-10 flex gap-2 cursor-pointer hover:-skew-4 hover:scale-120"
@@ -215,4 +215,4 @@ const SectionOne = ({ buckets, onRefresh }) => {
   )
 }
 
-export default SectionOne
+export default SectionAll

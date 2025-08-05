@@ -5,6 +5,7 @@ import SectionTwo from "./_components/SectionTwo"
 import { Bucket } from "@/lib/_models/BucketModel"
 import mongoose from "mongoose"
 import getAuthUser from "@/lib/getAuthUser"
+import ClientBucketsWrapper from "./_components/BucketWrapper"
 
 export default async function BucketList() {
   const user = await getAuthUser()
@@ -23,27 +24,9 @@ export default async function BucketList() {
     userId: bucket.userId.toString(),
   }))
 
-  const first25 = buckets.slice(0, 25)
-  const second25 = buckets.slice(25, 50)
-
   return (
-    <div className="w-full h-full flex items-center justify-center animate-appearin">
-      <div className="flex flex-col ">
-        <BookmarkButtons />
-      </div>
-      <div className="flex bg-white/70  shadow-md">
-        <section className="h-200 w-120 p-4 flex flex-col">
-          <div className="font-gloria">Page 1</div>
-          <SectionOne buckets={first25} />
-        </section>
-        <div className="flex-grow w-5 bg-leather shadow"></div>
-        <section className="h-200 w-120 p-4 flex flex-col ">
-          <div className="self-end font-gloria">
-            <FilterBucket />
-          </div>
-          <SectionTwo />
-        </section>
-      </div>
+    <div className="w-full h-full flex items-center justify-center animate-appearin overflow-hidden">
+      <ClientBucketsWrapper initialBuckets={buckets} />
     </div>
   )
 }

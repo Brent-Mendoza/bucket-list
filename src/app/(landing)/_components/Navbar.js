@@ -15,7 +15,7 @@ export default function Navbar() {
           href="/"
           className="max-md:text-2xl max-sm:text-xl text-3xl font-bold hover:tracking-wider duration-150 ease-linear text-asparagus"
         >
-          BUCK100
+          BUCK50
         </Link>
       </div>
       <div>

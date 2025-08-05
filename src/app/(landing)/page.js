@@ -13,12 +13,12 @@ export default function Home() {
         <PaintBucket className="self-end max-md:text-sm sm:text-xs" />
         <h1 className="max-md:text-2xl max-sm:text-3xl  text-4xl font-dancing">
           <span className="max-md:text-4xl max-sm:text-5xl font-semibold font-inter   text-6xl">
-            100
+            50
           </span>{" "}
           THINGS TO DO <br /> BEFORE BECOMING A BUCKET
         </h1>
         <p className="font-shadow self-start text-md max-md:text-sm max-sm:text-sm text-neutral-600 italic">
-          List 100 things you want to do in life and track your progress!
+          List 50 things you want to do in life and track your progress!
         </p>
         <Link href="/login" className="self-end">
           <Button className="font-gloria h-15 max-md:h-10 cursor-pointer hover:bg-cyan-600 active:scale-90 mt-2 duration-300 ease-linear hover:scale-110 bg-outerspace ">
