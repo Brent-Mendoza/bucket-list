@@ -4,7 +4,7 @@ import { bucketSchema } from "@/lib/model"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Pencil } from "lucide-react"
 import { useRouter } from "next/navigation"
-import React, { useEffect, useState } from "react"
+import React, { useCallback, useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import { toast } from "sonner"
 
@@ -24,21 +24,20 @@ const Paper = ({ id }) => {
     setVisibility((prev) => !prev)
   }
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     const res = await fetch(`/api/bucket/${id}`)
     if (!res.ok) {
-      // redirect to not-found page
       router.push("/bucket/not-found")
       return
     }
     const data = await res.json()
     setBucket(data)
     form.reset({ description: data.description })
-  }
+  }, [id, router, form])
 
   useEffect(() => {
     fetchData()
-  }, [id, router, form])
+  }, [fetchData])
 
   const onEdit = async (data) => {
     const response = await fetch(`/api/bucket/${id}`, {

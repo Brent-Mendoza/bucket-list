@@ -21,7 +21,7 @@ export default function UserForm() {
   return (
     <div className="flex flex-col gap-2 font-gloria">
       <h2 className="text-2xl font-bold ">
-        Hello {user.userData.username} you're here!
+        Hello {user.userData.username} {"you're"} here!
       </h2>
       <div className="flex gap-5">
         <p>Current Progress: {buckets?.length ? buckets.length : "?"}/50</p>

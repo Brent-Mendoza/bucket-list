@@ -10,7 +10,7 @@ const error = () => {
     <div className="flex flex-col items-center justify-center gap-2">
       <p className="text-2xl text-red-400 font-gloria max-md:text-xl max-sm:text-lg">
         Listen... I probably got lazy and coded this poorly or your internet is
-        slow and it failed fetching the data/ It's one of the two so just:
+        slow and it failed fetching the data/ {"It's"} one of the two so just:
       </p>
       <button
         onClick={handleRefresh}

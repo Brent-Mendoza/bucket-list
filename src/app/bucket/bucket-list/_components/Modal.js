@@ -158,7 +158,7 @@ const Modal = ({ id, open, onClose, onRefresh }) => {
         ) : (
           <div className="font-gloria flex items-center justify-center">
             <p className="text-xl max-md:text-lg max-sm:text-md">
-              It's loading.....*Cool animation effects*
+              {"It's"} loading.....*Cool animation effects*
             </p>
           </div>
         )}

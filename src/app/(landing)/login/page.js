@@ -18,7 +18,7 @@ export default function LogIn() {
           <LoginForm />
         </CardContent>
         <CardFooter className="text-neutral-600">
-          I honestly don't know what to put in here
+          I honestly {"don't"} know what to put in here
         </CardFooter>
       </Card>
     </section>

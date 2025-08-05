@@ -95,7 +95,7 @@ const LoginForm = () => {
                 href="/register"
                 className="self-end text-sm text-neutral-500 hover:tracking-wider hover:underline hover:underline-offset-2 duration-200 ease-linear"
               >
-                Don't have an account?
+                {"Don't have an account?"}
               </Link>
             </FormItem>
           )}

@@ -9,18 +9,17 @@ const Paper = ({ id }) => {
   const [error, setError] = useState(null)
   const router = useRouter()
 
-  const fetchData = async () => {
-    const res = await fetch(`/api/bucket/${id}`)
-    if (!res.ok) {
-      // redirect to not-found page
-      router.push("/bucket/not-found")
-      return
-    }
-    const data = await res.json()
-    setBucket(data)
-  }
-
   useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch(`/api/bucket/${id}`)
+      if (!res.ok) {
+        // redirect to not-found page
+        router.push("/bucket/not-found")
+        return
+      }
+      const data = await res.json()
+      setBucket(data)
+    }
     fetchData()
   }, [id, router])
 

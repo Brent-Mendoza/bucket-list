@@ -39,6 +39,9 @@ const nunito = Nunito({
 export const metadata = {
   title: "Bucket List",
   description: "List 100 things you want to do before becoming a bucket.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 }
 
 export default async function RootLayout({ children }) {
