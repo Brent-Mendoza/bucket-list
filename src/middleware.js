@@ -4,7 +4,7 @@ import getAuthUser from "./lib/getAuthUser"
 const publicRoutes = ["/", "/login", "register"]
 export default async function middleware(req) {
   const path = req.nextUrl.pathname
-  const isProtected = path.startsWith("bucket/") || path === "/bucket"
+  const isProtected = path.startsWith("/bucket") || path === "/bucket"
   const isPublic = publicRoutes.includes(path)
 
   const user = await getAuthUser()
