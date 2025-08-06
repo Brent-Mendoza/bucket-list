@@ -1,4 +1,5 @@
 import { Bucket } from "@/lib/_models/BucketModel"
+import { ConnectDB } from "@/lib/db"
 import { bucketSchema } from "@/lib/model"
 import mongoose from "mongoose"
 import { NextResponse } from "next/server"
