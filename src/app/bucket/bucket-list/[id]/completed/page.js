@@ -14,7 +14,10 @@ export default function CompletedBucket({ params }) {
         >
           <ArrowLeft /> Go Back
         </Link>
-        <Paper id={id} />
+        {!id && (
+          <p className="text-lg">Getting your data...wait nicely {":)"}</p>
+        )}
+        {id && <Paper id={id} />}
       </section>
     </div>
   )
