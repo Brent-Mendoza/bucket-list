@@ -10,6 +10,8 @@ const Paper = ({ id }) => {
   const router = useRouter()
 
   useEffect(() => {
+    if (!id) return
+
     const fetchData = async () => {
       const res = await fetch(`/api/bucket/${id}`)
       if (!res.ok) {

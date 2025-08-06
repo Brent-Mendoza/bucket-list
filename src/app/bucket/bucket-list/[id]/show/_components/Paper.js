@@ -25,6 +25,7 @@ const Paper = ({ id }) => {
   }
 
   const fetchData = useCallback(async () => {
+    if (!id) return
     const res = await fetch(`/api/bucket/${id}`)
     if (!res.ok) {
       router.push("/bucket/not-found")
