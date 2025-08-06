@@ -5,10 +5,23 @@ import { NextResponse } from "next/server"
 
 export const GET = async (request, { params }) => {
   const id = params.id
-  const bucket = await Bucket.findById(id)
-  if (!bucket) return NextResponse.json({ error: "Not Found" }, { status: 400 })
 
-  return NextResponse.json(bucket)
+  try {
+    await ConnectDB()
+
+    if (!id) {
+      return NextResponse.json({ error: "Invalid ID" }, { status: 400 })
+    }
+
+    const bucket = await Bucket.findById(id)
+    if (!bucket) {
+      return NextResponse.json({ error: "Not Found" }, { status: 400 })
+    }
+
+    return NextResponse.json(bucket)
+  } catch (err) {
+    return NextResponse.json({ error: "Server error" }, { status: 500 })
+  }
 }
 
 export const PATCH = async (request, { params }) => {
